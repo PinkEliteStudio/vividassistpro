@@ -1,0 +1,322 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Assist - Virtual Assistant for High-Ticket CEOs & Agencies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amsterdam+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            background-color: #FF69B4;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            width: 150px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        header img:hover {
+            transform: scale(1.05);
+        }
+        header h1 {
+            font-family: 'Amsterdam One', serif;
+            font-size: 3em;
+            margin: 10px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .book-call-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .cta {
+            background-color: #fff;
+            color: #FF69B4;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta:hover {
+            background-color: #f0f0f0;
+        }
+        .services, .about-me, .support, .reviews, .contact {
+            padding: 40px;
+            background: #fff;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .services h2, .about-me h2, .support h2, .reviews h2, .contact h2 {
+            color: #FF69B4;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .service-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .service-box:hover {
+            transform: translateY(-5px);
+        }
+        .service-box h3 {
+            color: #FF69B4;
+            margin-bottom: 10px;
+        }
+        .about-me img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .support-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .support-item {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .support-item:hover {
+            transform: translateY(-5px);
+        }
+        .support-item p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .review {
+            border-left: 4px solid #FF69B4;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #FF69B4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #FF85C0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #FF69B4;
+            color: #fff;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://raw.githubusercontent.com/PinkEliteStudio/VividAssist/main/vividlogo.png" alt="Vivid Assist Logo">
+        <h1>Vivid Assist</h1>
+        <p>Your Premier Virtual Assistant for High-Ticket CEOs & Marketing Agencies</p>
+        <div class="book-call-header">
+            <a href="https://calendly.com/pinkelitestudio" class="cta">Book a Call</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="services">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-box">
+                    <h3>SEO Support</h3>
+                    <p>Optimize your website for search engines to rank higher and attract organic traffic.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Traffic Generation</h3>
+                    <p>Create and manage ad campaigns (Meta, Google Ads) to drive targeted leads.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Email Marketing</h3>
+                    <p>Design and automate email funnels to nurture leads and convert sales.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Social Media Management</h3>
+                    <p>Schedule posts, create content, and engage with your audience on LinkedIn and Instagram.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Executive Scheduling</h3>
+                    <p>Manage calendars, book meetings, and coordinate travel for busy CEOs and CFOs.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Real Estate Support</h3>
+                    <p>Assist with listing management, client communication, and market research for agents.</p>
+                </div>
+                <div class="service-box">
+                    <h3>CRM Management</h3>
+                    <p>Organize leads, follow-ups, and client data in platforms like HubSpot or Salesforce.</p>
+                </div>
+                <div class="service-box">
+                    <h3>Content Creation</h3>
+                    <p>Write blogs, website copy, and social media posts tailored to your brand.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-me">
+            <h2>About Me</h2>
+            <img src="https://raw.githubusercontent.com/PinkEliteStudio/VividAssist/main/image.jpg" alt="Rhina Delgado">
+            <p>Hi, I’m Rhina Delgado, the founder of Vivid Assist. With years of experience supporting CEOs, CFOs, and marketing agencies, I specialize in streamlining operations, boosting traffic, and enhancing your brand’s online presence. My mission is to help high-ticket wellness and real estate professionals achieve their goals with efficiency and precision.</p>
+        </section>
+
+        <section class="support">
+            <h2>How I Support Your Success</h2>
+            <div class="support-grid">
+                <div class="support-item">
+                    <p>Elevate your search rankings with expert keyword research and SEO audits tailored to your niche.</p>
+                </div>
+                <div class="support-item">
+                    <p>Maximize ad ROI by analyzing performance and optimizing campaigns for high-ticket conversions.</p>
+                </div>
+                <div class="support-item">
+                    <p>Handle client inquiries and email correspondence to keep your communication seamless.</p>
+                </div>
+                <div class="support-item">
+                    <p>Coordinate executive schedules, meetings, and travel with precision, saving you time.</p>
+                </div>
+                <div class="support-item">
+                    <p>Maintain brand consistency by creating and scheduling impactful social media content.</p>
+                </div>
+                <div class="support-item">
+                    <p>Streamline your sales process with organized, up-to-date CRM databases.</p>
+                </div>
+                <div class="support-item">
+                    <p>Deliver detailed reports, presentations, and market research to support real estate strategies.</p>
+                </div>
+                <div class="support-item">
+                    <p>Provide actionable traffic growth insights through in-depth website analytics monitoring.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h2>What Clients Say</h2>
+            <div class="review">
+                <p>“Rhina transformed our marketing agency’s workflow! Her SEO strategies doubled our organic traffic in just 60 days, and her scheduling support saved me 10 hours a week.”</p>
+                <p><strong>— Sarah M., CEO, Wellness Marketing Co.</strong></p>
+            </div>
+            <div class="review">
+                <p>“As a real estate agent, I was overwhelmed with client management. Vivid Assist streamlined my CRM and handled my email campaigns, leading to a 20% increase in closings.”</p>
+                <p><strong>— Mark T., Luxury Real Estate Agent</strong></p>
+            </div>
+            <div class="review">
+                <p>“Rhina’s ad campaign support for our skincare brand was phenomenal. She generated 500+ leads in a month, and her attention to detail as an executive assistant is unmatched.”</p>
+                <p><strong>— Emily R., CFO, Glow Naturals</strong></p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <p>Ready to scale your business? Let’s work together to achieve your goals.</p>
+            <form action="https://formsubmit.co/pinkeliteva@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p>Or book a free strategy call: <a href="https://calendly.com/pinkelitestudio" class="cta">Schedule Now</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Vivid Assist. All rights reserved.</p>
+    </footer>
+</body>
+</html>
