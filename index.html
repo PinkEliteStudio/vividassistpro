@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,6 +8,7 @@
     <meta name="author" content="Rhina Delgado">
     <title>Vivid Assist | Premium Virtual Assistant for CEOs & CFOs</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -62,12 +24,43 @@
         }
     }
     </script>
+    <script type="text/javascript">
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (!gk_fileData[filename]) {
+                console.warn(`No data found for filename: ${filename}`);
+                return "";
+            }
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                    row.filter(filledCell).length >= (filteredData[index + 1]?.filter(filledCell).length || 0)
+                );
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                    headerRowIndex = 0;
+                }
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(`Error processing file ${filename}:`, e);
+                return "";
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header -->
     <header class="bg-pink-100 shadow">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <img src="vividlogo.png" onerror="this.src='https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png'" alt="Vivid Assist logo" class="h-16" loading="lazy">
+            <img src="/vividlogo.png" onerror="this.src='https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png'" alt="Vivid Assist logo" class="h-16" loading="lazy">
             <nav class="space-x-6">
                 <a href="#home" class="text-pink-700 hover:text-pink-900">Home</a>
                 <a href="#services" class="text-pink-700 hover:text-pink-900">Services</a>
@@ -97,7 +90,7 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-xl font-semibold text-pink-700 mb-2">Marketing & SEO</h3>
-                    <p class="text-gray-600">Content creation, social media, email campaigns, and SEO with SEMrush and Google Analytics.</p>
+                    <p class="text-gray-600">Content creation, social media, email campaigns, and SEOWITH SEMrush and Google Analytics.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-xl font-semibold text-pink-700 mb-2">Project Management</h3>
@@ -122,10 +115,10 @@
     <!-- About Me Section -->
     <section id="about" class="bg-pink-50 py-16">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <img src="rhinaimage.jpg" onerror="this.src='https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/rhinaimage.jpg'" alt="Rhina Delgado virtual assistant" class="w-64 h-64 rounded-full mb-6 md:mb-0 md:mr-8 object-cover" loading="lazy">
+            <img src="/rhinaimage.jpg" onerror="this.src='https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/rhinaimage.jpg'" alt="Rhina Delgado virtual assistant" class="w-64 h-64 rounded-full mb-6 md:mb-0 md:mr-8 object-cover" loading="lazy">
             <div>
                 <h2 class="text-3xl font-bold text-pink-900 mb-4">About Rhina Delgado</h2>
-                <p class="text-gray-700 mb-4">Rhina Delgado is a US-based, fully bilingual (English/Spanish) virtual assistant with over 15 years of experience supporting high-ticket CEOs and CFOs of companies with over $1M in revenue. As an expert account manager and freelancer, Rhina understands the demands of entrepreneurship, respects confidentiality, and delivers results-driven productivity. With Wing Virtual Assistants, focus on what truly matters while we handle the rest. Specializing in administrative tasks, calendar management, email handling, research, and more, Rhina empowers executives to lead and grow their businesses with confidence.</p>
+                <p class="text-gray-700 mb-4">Rhina Delgado is a US-based, fully bilingual (English/Spanish) virtual assistant with over 15 years of experience supporting high-ticket CEOs and CFOs of companies with over $1M in revenue. As an expert account manager and freelancer, Rhina understands the demands of entrepreneurship, respects confidentiality, and delivers results-driven productivity. With Vivid Assist, focus on what truly matters while we handle the rest. Specializing in administrative tasks, calendar management, email handling, research, and more, Rhina empowers executives to lead and grow their businesses with confidence.</p>
                 <a href="https://www.linkedin.com/in/rhinadelgado/" class="text-pink-700 hover:text-pink-900">Connect on LinkedIn</a>
             </div>
         </div>
