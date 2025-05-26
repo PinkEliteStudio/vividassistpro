@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Vivid Assist provides expert administrative support as your virtual assistant for high-ticket CEOs and CFOs. Email management, scheduling, and CRM services.">
+    <meta name="keywords" content="vivid, assist, vividassist, virtual assistant, administrative support, bilingual virtual assistant, high-ticket CEOs">
+    <meta name="author" content="Rhina Delgado">
+    <title>Vivid Assist | Administrative Support Virtual Assistant Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Administrative Support",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Vivid Assist",
+            "url": "https://vividassistpro.com"
+        },
+        "description": "Expert administrative support by Vivid Assist, your virtual assistant for high-ticket CEOs and CFOs, including email management, scheduling, and CRM services."
+    }
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GPS2B0L2T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4GPS2B0L2T');
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-pink-100 shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" class="h-12 sm:h-16" loading="lazy">
+            <button id="menu-toggle" class="md:hidden text-pink-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <nav id="menu" class="hidden md:flex md:space-x-6">
+                <a href="index.html" class="text-pink-700 hover:text-pink-900">Home</a>
+                <a href="index.html#services" class="text-pink-700 hover:text-pink-900">Services</a>
+                <a href="pricing.html" class="text-pink-700 hover:text-pink-900">Pricing</a>
+                <a href="index.html#about" class="text-pink-700 hover:text-pink-900">About</a>
+                <a href="index.html#contact" class="text-pink-700 hover:text-pink-900">Contact</a>
+                <a href="blog.html" class="text-pink-700 hover:text-pink-900">Blog</a>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-pink-100">
+            <nav class="flex flex-col space-y-2 px-4 py-2">
+                <a href="index.html" class="text-pink-700 hover:text-pink-900">Home</a>
+                <a href="index.html#services" class="text-pink-700 hover:text-pink-900">Services</a>
+                <a href="pricing.html" class="text-pink-700 hover:text-pink-900">Pricing</a>
+                <a href="index.html#about" class="text-pink-700 hover:text-pink-900">About</a>
+                <a href="index.html#contact" class="text-pink-700 hover:text-pink-900">Contact</a>
+                <a href="blog.html" class="text-pink-700 hover:text-pink-900">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Service Section -->
+    <section id="administrative-support" class="py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-pink-900 text-center mb-4">Administrative Support by Vivid Assist</h1>
+            <p class="text-center text-gray-700 mb-12 text-sm sm:text-base max-w-2xl mx-auto">Expert virtual assistant services for high-ticket CEOs and CFOs, helping you manage administrative tasks with precision and efficiency.</p>
+            <div class="bg-white p-6 rounded-lg shadow max-w-3xl mx-auto">
+                <h2 class="text-lg sm:text-xl font-semibold text-pink-700 mb-4">Why Choose Vivid Assist for Administrative Support?</h2>
+                <p class="text-gray-600 text-sm sm:text-base mb-4">At Vivid Assist, we understand the demands of running a high-growth business. As your virtual assistant, we provide top-tier administrative support, allowing you to focus on strategic priorities. Our services include:</p>
+                <ul class="list-disc list-inside text-gray-600 text-sm sm:text-base mb-4">
+                    <li>Email management to keep your inbox organized and prioritized.</li>
+                    <li>Scheduling and calendar management for seamless coordination.</li>
+                    <li>Travel planning to ensure hassle-free business trips.</li>
+                    <li>CRM management with tools like HubSpot and Salesforce for efficient client tracking.</li>
+                </ul>
+                <p class="text-gray-600 text-sm sm:text-base mb-4">With Vivid Assist, you get expert assistance tailored to your needs, delivered with professionalism and confidentiality.</p>
+                <div class="text-center">
+                    <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600 text-sm sm:text-base">Book a Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-pink-100 py-4 text-center">
+        <p class="text-gray-700 text-sm sm:text-base">© 2025 Vivid Assist. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
