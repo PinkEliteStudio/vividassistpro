@@ -190,7 +190,7 @@
           margin: 0 0 20px 0;
           width: 100%;
         }
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrappeript>.ml-form-embedBody .ml-form-fieldRow {
           margin: 0 0 10px 0;
           width: 100%;
         }
@@ -206,22 +206,17 @@
           border-width: 1px !important;
           font-family: 'Arial', sans-serif;
           font-size: 14px !important;
-          height: auto;
+          height: auto !important;
           line-height: 21px !important;
-          margin-bottom: 0;
-          margin-top: 0;
+          margin-bottom: 5px;
           padding: 10px !important;
           width: 100% !important;
           box-sizing: border-box !important;
         }
         #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
-        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #333333; }
+        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody input::-moz-placeholder,
+        #mlb2-26631926.ml-form-embedContainer .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+        #mlb2-26631926.ml-form-embedContainer .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder { color: #333333; }
         #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
           background-color: #ec4899 !important;
           border: none !important;
@@ -237,6 +232,7 @@
           padding: 10px !important;
           width: 100% !important;
           box-sizing: border-box !important;
+          margin-top: 10px !important;
         }
         #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
           background-color: #c026d3 !important;
@@ -260,6 +256,10 @@
         #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a {
           color: #9d174d;
         }
+        #mlb2-26631926.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-recaptcha {
+          margin-bottom: 30px !important;
+          clear: both !important;
+        }
         @media only screen and (max-width: 400px) {
           .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100% !important; }
           .ml-form-formContent.horozintalForm { float: left !important; }
@@ -267,6 +267,8 @@
           .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100% !important; }
           .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px !important; padding-bottom: 10px; }
           .ml-form-formContent.horozintalForm .ml-button-horizontal { width: 100% !important; }
+          .ml-form-recaptcha { width: 220px !important; }
+          .g-recaptcha { transform: scale(0.78); -webkit-transform: scale(0.78); transform-origin: 0 0; -webkit-transform-origin: 0 0; }
         }
     </style>
 </head>
