@@ -1,49 +1,10 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium virtual assistant pricing for $1M+ businesses. Save time and scale with Vivid Assist Pro’s elite services.">
-    <meta name="keywords" content="virtual assistant pricing, premium VA services, executive assistant for CEOs, bilingual VA pricing">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Premium virtual assistant pricing for CEOs, CFOs, and crypto developers. Save time with Vivid Assist Pro’s elite bilingual services.">
+    <meta name="keywords" content="virtual assistant pricing, premium VA services, executive assistant, bilingual VA, crypto developer support, Web3 assistant, DeFi, NFT">
     <meta name="author" content="Rhina Delgado">
     <title>Pricing - Vivid Assist Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,8 +28,8 @@
             },
             {
                 "@type": "Offer",
-                "name": "Growth Accelerator",
-                "price": "4995",
+                "name": "Web3 Accelerator",
+                "price": "3995",
                 "priceCurrency": "USD"
             },
             {
@@ -83,143 +44,126 @@
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header -->
-    <header class="bg-pink-100 shadow">
+    <header class="bg-pink-100 shadow fixed top-0 w-full z-10">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" class="h-16" loading="lazy">
-            <nav class="space-x-6">
-                <a href="/index.html#home" class="text-pink-700 hover:text-pink-900">Home</a>
-                <a href="/index.html#services" class="text-pink-700 hover:text-pink-900">Services</a>
-                <a href="/pricing.html" class="text-pink-700 font-bold hover:text-pink-900">Pricing</a>
-                <a href="/index.html#about" class="text-pink-700 hover:text-pink-900">About</a>
-                <a href="/index.html#contact" class="text-pink-700 hover:text-pink-900">Contact</a>
+            <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" class="h-10 sm:h-12" loading="lazy">
+            <button id="menu-toggle" class="md:hidden text-pink-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <nav id="menu" class="hidden md:flex md:space-x-4">
+                <a href="/index.html#home" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Home</a>
+                <a href="/index.html#services" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Services</a>
+                <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 font-bold text-sm md:text-base">Pricing</a>
+                <a href="/index.html#about" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">About</a>
+                <a href="/index.html#case-study" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Case Study</a>
+                <a href="/index.html#contact" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Contact</a>
+                <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Blog</a>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-pink-100">
+            <nav class="flex flex-col space-y-2 px-4 py-2">
+                <a href="/index.html#home" class="text-pink-700 hover:text-pink-900 text-sm">Home</a>
+                <a href="/index.html#services" class="text-pink-700 hover:text-pink-900 text-sm">Services</a>
+                <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-sm">Pricing</a>
+                <a href="/index.html#about" class="text-pink-700 hover:text-pink-900 text-sm">About</a>
+                <a href="/index.html#case-study" class="text-pink-700 hover:text-pink-900 text-sm">Case Study</a>
+                <a href="/index.html#contact" class="text-pink-700 hover:text-pink-900 text-sm">Contact</a>
+                <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm">Blog</a>
             </nav>
         </div>
     </header>
 
     <!-- Pricing Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-pink-900 text-center mb-8">Premium Pricing for $1M+ Entrepreneurs</h2>
-            <p class="text-lg text-gray-700 text-center mb-12">Reclaim 20–30 hours weekly with our elite virtual assistants, tailored for high-growth businesses.</p>
-            <div class="flex justify-center mb-8">
-                <button id="monthlyToggle" class="bg-pink-500 text-white px-4 py-2 rounded-l-full">Monthly</button>
-                <button id="annualToggle" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-r-full">Annual (Save 10%)</button>
+    <section class="pt-20 pb-12 sm:pt-24 sm:pb-16">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-pink-900 text-center mb-6">Premium Pricing for Entrepreneurs & Crypto Developers</h2>
+            <p class="text-sm sm:text-base text-gray-700 text-center mb-8 max-w-xl mx-auto">Reclaim 20–30 hours weekly with our elite bilingual VAs, tailored for high-growth businesses and Web3 projects.</p>
+            <div class="flex justify-center mb-6">
+                <button id="monthlyToggle" class="bg-pink-500 text-white px-3 py-1.5 rounded-l-full text-xs sm:text-sm">Monthly</button>
+                <button id="annualToggle" class="bg-gray-300 text-gray-800 px-3 py-1.5 rounded-r-full text-xs sm:text-sm">Annual (Save 10%)</button>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="space-y-6 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
                 <!-- Executive Essentials -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Executive Essentials</h3>
-                    <p class="text-gray-600 mb-4">Streamline daily operations.</p>
-                    <ul class="list-disc pl-5 text-gray-600 mb-4">
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+                    <h3 class="text-lg sm:text-xl font-semibold text-pink-700 mb-3">Executive Essentials</h3>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3">Streamline operations for CEOs & CFOs.</p>
+                    <ul class="list-disc pl-4 text-gray-600 text-xs sm:text-sm mb-3 space-y-1">
                         <li>Calendar Management</li>
                         <li>Email Management</li>
                         <li>CRM Updates</li>
                         <li>Basic Project Coordination</li>
                         <li>Weekly Status Reports</li>
                     </ul>
-                    <p class="text-gray-600 mb-4"><strong>40 Hours/Month</strong></p>
-                    <p class="text-2xl font-bold text-pink-600 mb-4" id="executivePrice">$2,995/month</p>
-                    <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Book a Discovery Call</a>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3"><strong>40 Hours/Month</strong></p>
+                    <p class="text-xl sm:text-2xl font-bold text-pink-600 mb-3" id="executivePrice">$2,995/month</p>
+                    <a href="https://calendly.com/pinkelitestudio" class="block bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm text-center">Book a Discovery Call</a>
                 </div>
-                <!-- Growth Accelerator -->
-                <div class="bg-white p-6 rounded-lg shadow border-2 border-pink-500">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Growth Accelerator</h3>
-                    <p class="text-gray-600 mb-4">Scale with advanced support.</p>
-                    <ul class="list-disc pl-5 text-gray-600 mb-4">
-                        <li>All Executive Essentials Services</li>
-                        <li>Social Media Scheduling</li>
-                        <li>Basic SEO Tasks</li>
-                        <li>Travel Planning</li>
-                        <li>Data Reporting</li>
+                <!-- Web3 Accelerator -->
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow border-2 border-pink-500">
+                    <h3 class="text-lg sm:text-xl font-semibold text-pink-700 mb-3">Web3 Accelerator</h3>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3">Scale blockchain projects with specialized support.</p>
+                    <ul class="list-disc pl-4 text-gray-600 text-xs sm:text-sm mb-3 space-y-1">
+                        <li>Discord/Telegram Community Management</li>
+                        <li>Notion Project Coordination</li>
+                        <li>Twitter & SEO Campaigns</li>
+                        <li>Smart Contract Audit Scheduling</li>
                         <li>Bi-Weekly Strategy Calls</li>
                     </ul>
-                    <p class="text-gray-600 mb-4"><strong>80 Hours/Month</strong></p>
-                    <p class="text-2xl font-bold text-pink-600 mb-4" id="growthPrice">$4,995/month</p>
-                    <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Book a Discovery Call</a>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3"><strong>60 Hours/Month</strong></p>
+                    <p class="text-xl sm:text-2xl font-bold text-pink-600 mb-3" id="web3Price">$3,995/month</p>
+                    <a href="https://calendly.com/pinkelitestudio" class="block bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm text-center">Book a Discovery Call</a>
                 </div>
                 <!-- Visionary Partner -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-4">Visionary Partner</h3>
-                    <p class="text-gray-600 mb-4">COO-level support for excellence.</p>
-                    <ul class="list-disc pl-5 text-gray-600 mb-4">
-                        <li>All Growth Accelerator Services</li>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+                    <h3 class="text-lg sm:text-xl font-semibold text-pink-700 mb-3">Visionary Partner</h3>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3">COO-level support for excellence.</p>
+                    <ul class="list-disc pl-4 text-gray-600 text-xs sm:text-sm mb-3 space-y-1">
+                        <li>All Executive & Web3 Services</li>
                         <li>Advanced Project Management</li>
                         <li>Custom Workflow Design</li>
                         <li>Marketing Support</li>
-                        <li>Monthly Performance Analysis</li>
                         <li>Weekly Calls with Rhina</li>
                     </ul>
-                    <p class="text-gray-600 mb-4"><strong>120 Hours/Month</strong></p>
-                    <p class="text-2xl font-bold text-pink-600 mb-4" id="visionaryPrice">$7,495/month</p>
-                    <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Book a Discovery Call</a>
+                    <p class="text-gray-600 text-xs sm:text-sm mb-3"><strong>120 Hours/Month</strong></p>
+                    <p class="text-xl sm:text-2xl font-bold text-pink-600 mb-3" id="visionaryPrice">$7,495/month</p>
+                    <a href="https://calendly.com/pinkelitestudio" class="block bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm text-center">Book a Discovery Call</a>
                 </div>
             </div>
-            <div class="text-center mt-8">
-                <p class="text-gray-700 mb-4">Need a custom solution? <a href="/index.html#contact" class="text-pink-700 hover:text-pink-900">Contact us for a tailored quote</a>.</p>
-                <p class="text-gray-700 italic">Limited to 5 clients per package for personalized service.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust Signals Section -->
-    <section class="bg-pink-50 py-16">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold text-pink-900 text-center mb-8">Why Choose Vivid Assist Pro?</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <p class="text-lg font-semibold text-pink-700">Trusted by Leaders</p>
-                    <p class="text-gray-700">“Vivid Assist Pro saved me 20 hours a week!” – CEO, Tech Startup</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg font-semibold text-pink-700">Risk-Free Guarantee</p>
-                    <p class="text-gray-700">14-day money-back guarantee, no questions asked.</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg font-semibold text-pink-700">Secure & Bilingual</p>
-                    <p class="text-gray-700">Bank-grade encryption, English/Spanish support.</p>
-                </div>
+            <div class="text-center mt-6">
+                <p class="text-gray-700 text-xs sm:text-sm mb-2">Need a custom solution? <a href="/index.html#contact" class="text-pink-700 hover:text-pink-900">Contact us</a>.</p>
+                <p class="text-gray-700 text-xs sm:text-sm italic">Limited to 5 clients per package.</p>
             </div>
         </div>
     </section>
 
     <!-- Time Savings Calculator -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold text-pink-900 text-center mb-8">Estimate Your Time Savings</h3>
-            <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-                <p class="text-gray-700 mb-4">How many hours do you spend on admin tasks weekly?</p>
-                <input type="number" id="hoursInput" class="w-full p-2 border rounded mb-4" placeholder="Enter hours">
-                <p id="savingsOutput" class="text-gray-700 mb-4"></p>
-                <button onclick="calculateSavings()" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Calculate Savings</button>
+    <section class="py-12 sm:py-16 bg-pink-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h3 class="text-xl sm:text-2xl font-bold text-pink-900 text-center mb-6">Estimate Your Time Savings</h3>
+            <div class="bg-white p-4 sm:p-6 rounded-lg shadow max-w-sm mx-auto">
+                <p class="text-gray-700 text-xs sm:text-sm mb-3">How many hours do you spend on admin tasks weekly?</p>
+                <input type="number" id="hoursInput" class="w-full p-2 border rounded mb-3 text-xs sm:text-sm" placeholder="Enter hours">
+                <p id="savingsOutput" class="text-gray-700 text-xs sm:text-sm mb-3"></p>
+                <button onclick="calculateSavings()" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm w-full">Calculate Savings</button>
             </div>
         </div>
     </section>
 
-    <!-- Lead Capture Form -->
-    <section class="bg-pink-50 py-16 text-center">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold text-pink-900 mb-4">Stay Informed</h3>
-            <p class="text-gray-700 mb-6">Sign up for tips on scaling your $1M+ business with elite VA support.</p>
-            <!-- Replace with your MailerLite embed code -->
-            <form class="max-w-md mx-auto">
-                <input type="email" placeholder="Enter your email" class="w-full p-2 border rounded mb-4">
-                <button type="submit" class="bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Subscribe</button>
-            </form>
-            <p class="text-gray-700 mt-4">We respect your privacy. Unsubscribe anytime.</p>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="bg-pink-100 py-4 text-center">
-        <p class="text-gray-700">Contact Rhina Delgado: 786.385.7888 | <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a></p>
-        <p class="text-gray-700">© 2025 Vivid Assist. All rights reserved.</p>
+    <footer class="bg-pink-100 py-6 text-center">
+        <p class="text-gray-700 text-xs sm:text-sm mb-2">Trusted by leaders: “Vivid Assist saved me 20 hours a week!” – CEO, Tech Startup</p>
+        <p class="text-gray-700 text-xs sm:text-sm mb-2">Contact Rhina Delgado: 786-385-7888 | <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a> | Telegram: @VividAssistPro</p>
+        <p class="text-gray-700 text-xs sm:text-sm">© 2025 Vivid Assist. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script>
         const monthlyToggle = document.getElementById('monthlyToggle');
         const annualToggle = document.getElementById('annualToggle');
         const executivePrice = document.getElementById('executivePrice');
-        const growthPrice = document.getElementById('growthPrice');
+        const web3Price = document.getElementById('web3Price');
         const visionaryPrice = document.getElementById('visionaryPrice');
 
         monthlyToggle.addEventListener('click', () => {
@@ -228,7 +172,7 @@
             annualToggle.classList.add('bg-gray-300', 'text-gray-800');
             annualToggle.classList.remove('bg-pink-500', 'text-white');
             executivePrice.textContent = '$2,995/month';
-            growthPrice.textContent = '$4,995/month';
+            web3Price.textContent = '$3,995/month';
             visionaryPrice.textContent = '$7,495/month';
         });
 
@@ -238,7 +182,7 @@
             monthlyToggle.classList.add('bg-gray-300', 'text-gray-800');
             monthlyToggle.classList.remove('bg-pink-500', 'text-white');
             executivePrice.textContent = '$2,695/month (Save 10%)';
-            growthPrice.textContent = '$4,495/month (Save 10%)';
+            web3Price.textContent = '$3,595/month (Save 10%)';
             visionaryPrice.textContent = '$6,745/month (Save 10%)';
         });
 
@@ -247,11 +191,17 @@
             const savingsOutput = document.getElementById('savingsOutput');
             if (hours > 0) {
                 const savedHours = Math.min(hours, 30);
-                savingsOutput.textContent = `Save up to ${savedHours} hours weekly with Vivid Assist Pro!`;
+                savingsOutput.textContent = `Save up to ${savedHours} hours weekly!`;
             } else {
                 savingsOutput.textContent = 'Please enter a valid number of hours.';
             }
         }
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
     </script>
 </body>
 </html>
