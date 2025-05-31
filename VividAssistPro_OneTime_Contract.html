@@ -1,0 +1,125 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Assist Pro One-Time Service Contract</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .logo { max-width: 150px; }
+        .signature { margin-top: 50px; }
+        .signature-line { border-top: 1px solid #000; width: 200px; margin-top: 20px; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container bg-white p-8 rounded-lg shadow">
+        <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png" alt="Vivid Assist Logo" class="logo mb-6" loading="lazy">
+        <h1 class="text-2xl font-bold text-pink-900 mb-4">Vivid Assist Pro One-Time Service Contract</h1>
+        <p class="text-gray-600 mb-4">This One-Time Service Contract (“Agreement”) is entered into on [Date] between Vivid Assist Pro (“Provider”), located at Naples, FL 34102, and [Client Name] (“Client”), located at [Client Address].</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">1. Services Provided</h2>
+        <p class="text-gray-600 mb-4">Provider agrees to deliver the following virtual assistant services for a one-time engagement:</p>
+        <ul class="text-gray-600 mb-4 list-disc pl-5">
+            <li>Email Management: Organizing and prioritizing inbox.</li>
+            <li>Scheduling & Calendar Management: Coordinating meetings and appointments.</li>
+            <li>CRM Support: Managing client data in tools like HubSpot or Salesforce.</li>
+            <li>Project Coordination: Overseeing tasks to ensure timely completion.</li>
+        </ul>
+        <p class="text-gray-600 mb-4">Total Hours: [Insert Hours]. Additional services require a separate agreement.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">2. Term</h2>
+        <p class="text-gray-600 mb-4">This Agreement commences on [Start Date] and concludes upon completion of [Insert Hours] hours or by [End Date], whichever occurs first.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">3. Payment Terms</h2>
+        <ul class="text-gray-600 mb-4 list-disc pl-5">
+            <li><strong>Payment</strong>: Full payment of $[Insert Total Fee] is due upfront upon signing this Agreement.</li>
+            <li><strong>Payment Method</strong>: Payments are processed via Stripe. Invoice is issued upon signing.</li>
+            <li><strong>Late Payments</strong>: Payments not received within 5 business days of the due date incur a 5% late fee.</li>
+            <li><strong>Refunds</strong>: A 7-day refund period is offered from the start date, subject to review. No refunds are issued after services commence.</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">4. Client Responsibilities</h2>
+        <ul class="text-gray-600 mb-4 list-disc pl-5">
+            <li>Provide accurate and timely information to facilitate service delivery.</li>
+            <li>Respond to communications within 48 hours to ensure project progress.</li>
+            <li>Grant necessary access to tools (e.g., CRM, social media accounts) as agreed.</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">5. Confidentiality</h2>
+        <p class="text-gray-600 mb-4">Provider agrees to maintain the confidentiality of all Client data and will not disclose sensitive information without consent, except as required by law.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">6. Limitation of Liability</h2>
+        <p class="text-gray-600 mb-4">Provider is not liable for indirect, incidental, or consequential damages arising from service use. Services are provided “as is,” with no warranties beyond those expressly stated.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">7. Termination</h2>
+        <p class="text-gray-600 mb-4">Either party may terminate this Agreement with 10 days’ written notice if the other party breaches its obligations. Upon termination, Client is responsible for payments due for services rendered.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">8. Governing Law</h2>
+        <p class="text-gray-600 mb-4">This Agreement is governed by the laws of the State of Florida. Any disputes will be resolved in the courts of Collier County, Florida.</p>
+
+        <h2 class="text-xl font-semibold text-pink-700 mb-3">9. Contact Information</h2>
+        <p class="text-gray-600 mb-4">For questions, contact Provider at: <br>
+        Email: <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a><br>
+        Phone: 786-385-7888<br>
+        Website: <a href="https://vividassistpro.com" class="text-pink-700 hover:text-pink-900">vividassistpro.com</a></p>
+
+        <p class="text-gray-600 mb-6">By signing below, both parties agree to the terms of this Agreement. Full terms are available at <a href="https://vividassistpro.com/terms.html" class="text-pink-700 hover:text-pink-900">vividassistpro.com/terms.html</a>.</p>
+
+        <div class="signature flex justify-between">
+            <div>
+                <p class="text-gray-600">Provider: Vivid Assist Pro</p>
+                <p class="text-gray-600">By: Rhina Delgado</p>
+                <div class="signature-line"></div>
+                <p class="text-gray-600">Date: [Provider Signature Date]</p>
+            </div>
+            <div>
+                <p class="text-gray-600">Client: [Client Name]</p>
+                <p class="text-gray-600">By: [Client Signature]</p>
+                <div class="signature-line"></div>
+                <p class="text-gray-600">Date: [Client Signature Date]</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
