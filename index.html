@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Vivid Assist provides premium AI-powered virtual assistant services for CEOs, CFOs, crypto entrepreneurs, and real estate clients. Expert bilingual support in English and Spanish, specializing in administrative tasks, marketing, SEO, Web3 campaign management, and remote closing for high-ticket offers.">
-    <meta name="keywords" content="vivid, assist, vividassist, virtual assistant, AI virtual assistant, bilingual virtual assistant, high-ticket CEOs, crypto entrepreneurs, blockchain support, Web3 assistant, Telegram, Discord, Reddit, YouTube, SEO, DeFi, NFT, remote closing, high-ticket sales, real estate support">
+    <meta name="description" content="Vivid Assist provides premium AI-powered bilingual virtual assistant services for high-ticket CEOs, CFOs, crypto entrepreneurs, and real estate clients. Specializing in administrative tasks, marketing, SEO, Web3 campaign management, and remote closing.">
+    <meta name="keywords" content="vivid assist, virtual assistant, AI virtual assistant, bilingual virtual assistant, high-ticket CEOs, crypto entrepreneurs, blockchain support, Web3 assistant, Telegram, Discord, Reddit, YouTube, SEO, DeFi, NFT, remote closing, high-ticket sales, real estate support">
     <meta name="author" content="Rhina Delgado">
-    <title>Vivid Assist | Premium AI-Powered Virtual Assistant Services for CEOs, CFOs, Crypto Entrepreneurs & Real Estate</title>
+    <title>Vivid Assist | Premium AI-Powered Virtual Assistant Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="application/ld+json">
     {
@@ -15,7 +15,7 @@
         "name": "Vivid Assist",
         "description": "Premium AI-powered bilingual virtual assistant services for high-ticket CEOs, CFOs, crypto entrepreneurs, and real estate clients.",
         "url": "https://vividassistpro.com",
-        "logo": "https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png",
+        "logo": "/images/vividlogo.png",
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "pinkeliteva@gmail.com",
@@ -44,14 +44,28 @@
     <!-- reCAPTCHA Script -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
-     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+     function timestamp() { 
+         var response = document.getElementById("g-recaptcha-response"); 
+         if (response == null || response.value.trim() == "") {
+             var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+             elems["ts"] = JSON.stringify(new Date().getTime());
+             document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+         } 
+     } 
+     setInterval(timestamp, 500); 
     </script>
+    <style>
+        .animate-fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
     <!-- Header -->
     <header class="bg-pink-100 shadow fixed top-0 w-full z-10">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" class="h-10 sm:h-12" loading="lazy">
+            <img src="/images/vividlogo.png" alt="Vivid Assist logo" onerror="this.src='https://via.placeholder.com/150?text=Logo'" class="h-10 sm:h-12" loading="lazy">
             <button id="menu-toggle" class="md:hidden text-pink-700 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -61,35 +75,37 @@
                 <a href="#home" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Home</a>
                 <a href="#services" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Services</a>
                 <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Pricing</a>
+                <a href="#tools" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Tools</a>
+                <a href="#web3" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Web3</a>
+                <a href="#case-studies" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Case Studies</a>
                 <a href="#about" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">About</a>
-                <a href="#case-study" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Case Study</a>
                 <a href="#contact" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Contact</a>
                 <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Blog</a>
-                <a href="/terms.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Terms</a>
             </nav>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-pink-100">
             <nav class="flex flex-col space-y-2 px-4 py-2">
-                <a href="#home" class="text-pink-700 hover:text-pink-900 text-sm">Home</a>
-                <a href="#services" class="text-pink-700 hover:text-pink-900 text-sm">Services</a>
-                <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-sm">Pricing</a>
-                <a href="#about" class="text-pink-700 hover:text-pink-900 text-sm">About</a>
-                <a href="#case-study" class="text-pink-700 hover:text-pink-900 text-sm">Case Study</a>
-                <a href="#contact" class="text-pink-700 hover:text-pink-900 text-sm">Contact</a>
-                <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm">Blog</a>
-                <a href="/terms.html" class="text-pink-700 hover:text-pink-900 text-sm">Terms</a>
+                <a href="#home" class="text-pink-700 hover:text-pink-900 text-base">Home</a>
+                <a href="#services" class="text-pink-700 hover:text-pink-900 text-base">Services</a>
+                <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-base">Pricing</a>
+                <a href="#tools" class="text-pink-700 hover:text-pink-900 text-base">Tools</a>
+                <a href="#web3" class="text-pink-700 hover:text-pink-900 text-base">Web3</a>
+                <a href="#case-studies" class="text-pink-700 hover:text-pink-900 text-base">Case Studies</a>
+                <a href="#about" class="text-pink-700 hover:text-pink-900 text-base">About</a>
+                <a href="#contact" class="text-pink-700 hover:text-pink-900 text-base">Contact</a>
+                <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-base">Blog</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="bg-pink-50 pt-20 pb-12 sm:pt-24 sm:pb-16 text-center">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-900 mb-4">Vivid Assist: Premium AI-Powered Virtual Assistants for CEOs, CFOs, Crypto Entrepreneurs & Real Estate</h1>
-            <p class="text-sm sm:text-base text-gray-700 mb-6 max-w-xl mx-auto">Scale your business, blockchain project, or real estate goals with Vivid Assist’s bilingual AI-driven virtual assistants. We leverage advanced AI to manage admin, marketing, Web3 campaigns, and high-ticket sales remotely with unmatched efficiency.</p>
+    <section id="home" class="bg-pink-50 pt-20 pb-12 sm:pt-24 sm:pb-16 text-center bg-[url('https://images.unsplash.com/photo-1516321310766-66f1f70e88c7')] bg-cover bg-center">
+        <div class="container mx-auto px-4 sm:px-6 backdrop-blur-sm bg-pink-50/80">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-900 mb-4 animate-fade-in">Vivid Assist: Premium AI-Powered Virtual Assistants</h1>
+            <p class="text-base sm:text-lg text-gray-700 mb-6 max-w-xl mx-auto">Scale your business with bilingual, AI-driven VAs for CEOs, crypto entrepreneurs, and real estate leaders.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm">Book a Consultation</a>
-                <a href="/pricing.html" class="bg-transparent border border-pink-500 text-pink-500 px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white text-xs sm:text-sm">View Pricing</a>
+                <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg animate-pulse">Book a Free Consultation</a>
+                <a href="/pricing.html" class="bg-transparent border border-pink-500 text-pink-500 px-4 py-2 rounded-full hover:bg-pink-500 hover:text-white text-base sm:text-lg">View Pricing</a>
             </div>
         </div>
     </section>
@@ -101,33 +117,71 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <a href="/administrative-support.html"><h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">AI-Powered Administrative Support</h3></a>
-                    <p class="text-gray-700 text-xs sm:text-sm">Leverage advanced AI for email management, scheduling, and CRM tools like Salesforce, delivered with precision by Vivid Assist.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Leverage AI for email management, scheduling, and CRM tools like Salesforce, delivered with precision.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">AI-Driven Marketing & SEO</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Boost your brand with AI-optimized content creation, social media, and SEO using tools like SEMrush and Google Analytics, powered by Vivid Assist.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Boost your brand with AI-optimized content, social media, and SEO using SEMrush and Google Analytics.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Crypto Entrepreneur Support</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Scale Web3 projects with AI-driven Telegram and Discord community management, Reddit AMAs, YouTube content coordination, and Notion project tracking.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Scale Web3 projects with AI-driven Telegram, Discord, Reddit AMAs, and YouTube coordination.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">AI-Enhanced Project Management</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Coordinate teams and tasks using AI-powered tools like Asana, Trello, or Monday.com with Vivid Assist.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Coordinate teams using AI-powered tools like Asana, Trello, or Monday.com.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Client Onboarding</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Streamline inquiries and contracts via AI-driven workflows on Slack or Zoom for seamless onboarding with Vivid Assist.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Streamline inquiries and contracts via AI-driven workflows on Slack or Zoom.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Event Coordination</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Plan webinars, retreats, or Web3 AMAs with AI-enhanced precision through Vivid Assist.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Plan webinars, retreats, or Web3 AMAs with AI-enhanced precision.</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
                     <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Real Estate Support</h3>
-                    <p class="text-gray-700 text-xs sm:text-sm">Leverage AI to manage property listings, schedule showings, and engage high-net-worth buyers for luxury real estate in Naples, FL.</p>
+                    <p class="text-gray-700 text-sm sm:text-base">Manage property listings, schedule showings, and engage high-net-worth buyers with AI tools.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-12 sm:py-16 bg-pink-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 text-center mb-6">Our AI-Powered Tools</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow text-center">
+                    <img src="https://www.salesforce.com/favicon.ico" alt="Salesforce" class="h-12 mx-auto mb-2">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Salesforce</h3>
+                    <p class="text-gray-700 text-sm sm:text-base">Automates CRM for seamless client management, saving 10 hours/week.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow text-center">
+                    <img src="https://www.semrush.com/favicon.ico" alt="SEMrush" class="h-12 mx-auto mb-2">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">SEMrush</h3>
+                    <p class="text-gray-700 text-sm sm:text-base">Optimizes SEO and marketing campaigns for maximum ROI.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow text-center">
+                    <img src="https://www.asana.com/favicon.ico" alt="Asana" class="h-12 mx-auto mb-2">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Asana</h3>
+                    <p class="text-gray-700 text-sm sm:text-base">Streamlines project management with AI-driven task automation.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow text-center">
+                    <img src="https://www.hubspot.com/favicon.ico" alt="HubSpot" class="h-12 mx-auto mb-2">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">HubSpot</h3>
+                    <p class="text-gray-700 text-sm sm:text-base">Enhances CRM, marketing, and sales with AI-driven automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web3 Section -->
+    <section id="web3" class="py-12 sm:py-16 bg-pink-50">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Web3 Support for Crypto Entrepreneurs</h2>
+            <p class="text-gray-700 text-sm sm:text-base mb-6 max-w-2xl mx-auto">Manage Discord communities, Reddit AMAs, and NFT campaigns with AI-driven precision. Our VAs use blockchain-secure tools to protect your data.</p>
+            <a href="https://t.me/VividAssistPro" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Join Our Web3 Telegram Group</a>
         </div>
     </section>
 
@@ -136,24 +190,35 @@
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-xl sm:text-2xl font-bold text-pink-900 text-center mb-6">Scale Your High-Ticket Offers with AI-Powered Remote Closing</h2>
             <div class="text-center max-w-2xl mx-auto">
-                <p class="text-gray-700 text-sm sm:text-base mb-4">Imagine your favorite influencer, coach, or CEO launching a mastermind, mentorship, or high-level offer. They can’t handle every sales call themselves while focusing on delivering value—that’s where Vivid Assist’s AI-powered remote closing expertise comes in.</p>
-                <p class="text-gray-700 text-sm sm:text-base mb-4">Our AI-driven remote closers master the art of helping clients say yes to life-changing offers, all from a laptop, anywhere in the world. We work with CEOs, CFOs, crypto entrepreneurs, and real estate clients to scale their high-ticket programs with unmatched efficiency.</p>
-                <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm">Learn How We Can Scale Your Sales</a>
+                <p class="text-gray-700 text-sm sm:text-base mb-4">Launch masterminds, mentorships, or high-level offers with ease. Our AI-driven remote closers help clients say yes to life-changing programs, all from a laptop, anywhere in the world.</p>
+                <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Learn How We Can Scale Your Sales</a>
             </div>
         </div>
     </section>
 
-    <!-- Case Study Section -->
-    <section id="case-study" class="bg-pink-50 py-12 sm:py-16">
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="bg-pink-50 py-12 sm:py-16">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 text-center mb-6">Case Study: Scaling an NFT Project</h2>
-            <div class="bg-white p-4 sm:p-6 rounded-lg shadow max-w-2xl mx-auto">
-                <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Challenge</h3>
-                <p class="text-gray-700 text-xs sm:text-sm mb-3">An NFT project struggled to manage Discord community growth, Reddit AMAs, and YouTube promo videos, diverting focus from smart contract development.</p>
-                <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Solution</h3>
-                <p class="text-gray-700 text-xs sm:text-sm mb-3">Vivid Assist provided 60 hours/month, leveraging AI to moderate a 10,000-member Discord, schedule Reddit AMAs, and coordinate YouTube content with influencers.</p>
-                <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Results</h3>
-                <p class="text-gray-700 text-xs sm:text-sm">Saved 20 hours/week, grew Discord by 40%, and boosted NFT sales by 25% via Reddit and YouTube campaigns, freeing developers to code.</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 text-center mb-6">Our Success Stories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Case Study: Scaling an NFT Project</h3>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Challenge</h4>
+                    <p class="text-gray-700 text-sm sm:text-base mb-3">An NFT project struggled to manage a 10,000-member Discord, Reddit AMAs, and YouTube content.</p>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Solution</h4>
+                    <p class="text-gray-700 text-sm sm:text-base mb-3">Vivid Assist provided 60 hours/month, using AI to moderate Discord, schedule AMAs, and coordinate YouTube campaigns.</p>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Results</h4>
+                    <p class="text-gray-700 text-sm sm:text-base">Saved 20 hours/week, grew Discord by 40%, and boosted NFT sales by 25%.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+                    <h3 class="text-base sm:text-lg font-semibold text-pink-700 mb-2">Case Study: Luxury Real Estate Success</h3>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Challenge</h4>
+                    <p class="text-gray-700 text-sm sm:text-base mb-3">A Naples, FL real estate firm struggled to manage high-net-worth client inquiries and property showings.</p>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Solution</h4>
+                    <p class="text-gray-700 text-sm sm:text-base mb-3">Vivid Assist provided 40 hours/month of bilingual support, using AI tools like HubSpot to streamline CRM and scheduling.</p>
+                    <h4 class="text-sm font-semibold text-pink-700 mb-2">Results</h4>
+                    <p class="text-gray-700 text-sm sm:text-base">Increased client response rate by 30% and closed $2M in luxury property sales.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -162,11 +227,11 @@
     <section id="about" class="bg-pink-50 py-12 sm:py-16">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row items-center gap-6">
-                <img src="https://raw.githubusercontent.com/PinkEliteStudio/vividassistpro/main/rhinaimage.jpg" alt="Rhina Delgado" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover" loading="lazy">
+                <img src="/images/rhinaimage.jpg" alt="Rhina Delgado" onerror="this.src='https://via.placeholder.com/150?text=Rhina'" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover" loading="lazy">
                 <div class="text-center md:text-left">
                     <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-3">About Rhina Delgado</h2>
-                    <p class="text-gray-700 text-xs sm:text-sm mb-3">Rhina Delgado, based in Naples, FL, is a bilingual (English/Spanish) virtual assistant with 15+ years supporting CEOs, CFOs, crypto entrepreneurs, and real estate clients of $1M+ companies. Leveraging advanced AI, Rhina delivers results-driven productivity in admin, marketing, Web3 campaigns, and luxury real estate support.</p>
-                    <a href="https://www.linkedin.com/in/rhinadelgado/" class="text-pink-700 hover:text-pink-900 text-xs sm:text-sm">Connect on LinkedIn</a>
+                    <p class="text-gray-700 text-sm sm:text-base mb-3">Rhina Delgado, based in Naples, FL, is a bilingual (English/Spanish) virtual assistant with 15+ years supporting CEOs, CFOs, crypto entrepreneurs, and real estate clients of $1M+ companies. Leveraging AI, Rhina delivers results-driven productivity.</p>
+                    <a href="https://www.linkedin.com/in/rhinadelgado/" class="text-pink-700 hover:text-pink-900 text-sm sm:text-base">Connect on LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -175,20 +240,37 @@
     <!-- Contact Section -->
     <section id="contact" class="py-12 sm:py-16 text-center">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Elevate Your Business, Web3 Project, or Real Estate Goals</h2>
-            <p class="text-gray-700 text-xs sm:text-sm mb-6 max-w-xl mx-auto">Schedule a consultation to explore how Vivid Assist’s AI-powered premium VAs can support your goals.</p>
-            <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-xs sm:text-sm">Book Now</a>
-            <p class="mt-4 text-gray-700 text-xs sm:text-sm">Email: <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a> | Phone: 786-385-7888 | Telegram: @VividAssistPro</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Elevate Your Business with Vivid Assist</h2>
+            <p class="text-gray-700 text-sm sm:text-base mb-6 max-w-xl mx-auto">Schedule a consultation to explore how our AI-powered, bilingual VAs can support your goals.</p>
+            <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Book Now</a>
+            <p class="mt-4 text-gray-700 text-sm sm:text-base">Email: <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a> | Phone: 786-385-7888 | Telegram: @VividAssistPro</p>
+            <!-- Lead Magnet Form -->
+            <div class="mt-6 max-w-md mx-auto">
+                <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Download Our Free eBook</h3>
+                <p class="text-gray-700 text-sm sm:text-base mb-4">Discover 5 Ways AI-Powered VAs Boost CEO Productivity.</p>
+                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dfn000003U2iy" method="POST" class="bg-white p-6 rounded-lg shadow">
+                    <input type="hidden" name="captcha_settings" value='{"keyname":"vividassistpro","fallback":"true","orgId":"00Dfn000003U2iy","ts":""}'>
+                    <input type="hidden" name="oid" value="00Dfn000003U2iy">
+                    <input type="hidden" name="retURL" value="https://www.vividassistpro.com/thank-you.html">
+                    <input type="hidden" name="lead_source" value="eBook Download">
+                    <input type="hidden" name="Campaign_ID" value="701fn0000012345">
+                    <div class="mb-4">
+                        <label for="email" class="block text-left text-gray-700 font-bold text-sm mb-2">Email</label>
+                        <input id="email" maxlength="80" name="email" size="20" type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" required />
+                    </div>
+                    <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Get Your Free eBook</button>
+                </form>
+            </div>
             <!-- Newsletter Signup Form -->
             <div class="mt-6 max-w-md mx-auto">
                 <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Join Our Newsletter</h3>
-                <p class="text-gray-700 text-xs sm:text-sm mb-4">Get tips on scaling your business, Web3 project, or real estate goals with our elite AI-driven VAs.</p>
+                <p class="text-gray-700 text-sm sm:text-base mb-4">Get tips on scaling your business, Web3 project, or real estate goals.</p>
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dfn000003U2iy" method="POST" class="bg-white p-6 rounded-lg shadow">
                     <input type="hidden" name="captcha_settings" value='{"keyname":"vividassistpro","fallback":"true","orgId":"00Dfn000003U2iy","ts":""}'>
                     <input type="hidden" name="oid" value="00Dfn000003U2iy">
                     <input type="hidden" name="retURL" value="https://www.vividassistpro.com/thank-you.html">
                     <input type="hidden" name="lead_source" value="Newsletter Signup">
-                    <input type="hidden" name="Campaign_ID" value="YOUR_SALESFORCE_CAMPAIGN_ID">
+                    <input type="hidden" name="Campaign_ID" value="701fn0000012345">
                     <div class="mb-4">
                         <label for="first_name" class="block text-left text-gray-700 font-bold text-sm mb-2">First Name</label>
                         <input id="first_name" maxlength="40" name="first_name" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" required />
@@ -211,23 +293,34 @@
                     <div class="mb-4">
                         <p class="text-gray-700 text-xs">You can unsubscribe anytime. For more details, review our <a href="/terms.html" class="text-pink-700 hover:text-pink-900">Privacy Policy</a>.</p>
                     </div>
-                    <button type="submit" name="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Subscribe</button>
+                    <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Subscribe</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Sticky CTA Bar for Mobile -->
+    <div class="fixed bottom-0 left-0 w-full bg-pink-500 text-white text-center py-2 md:hidden z-20">
+        <a href="https://calendly.com/pinkelitestudio" class="text-base sm:text-lg">Book a Free Consultation Now</a>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-pink-100 py-6 text-center">
-        <p class="text-gray-700 text-xs sm:text-sm">© 2025 Vivid Assist. All rights reserved.</p>
+        <p class="text-gray-700 text-sm sm:text-base">© 2025 Vivid Assist. All rights reserved.</p>
     </footer>
 
     <!-- Mobile Menu Script -->
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = mobileMenu.querySelectorAll('a');
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
