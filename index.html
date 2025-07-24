@@ -66,24 +66,26 @@
 <body class="bg-gray-100 font-sans">
     <!-- Header -->
     <header class="bg-pink-100 shadow fixed top-0 w-full z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <img src="https://raw.githubusercontent.com/vividassistpro/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" onerror="this.src='https://via.placeholder.com/150?text=Vivid+Assist+Logo'" class="h-10 sm:h-12" loading="lazy">
-            <button id="menu-toggle" class="md:hidden text-pink-700 focus:outline-none">
+        <div class="container mx-auto px-4 py-4 flex items-center">
+            <img src="https://raw.githubusercontent.com/vividassistpro/vividassistpro/main/vividlogo.png" alt="Vivid Assist logo" onerror="this.src='https://via.placeholder.com/150?text=Vivid+Assist+Logo'" class="h-10 sm:h-12 mr-4" loading="lazy">
+            <nav id="menu" class="flex-1">
+                <div class="md:flex md:space-x-4 justify-end">
+                    <a href="#home" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Home</a>
+                    <a href="#services" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Services</a>
+                    <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Pricing</a>
+                    <a href="#tools" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Tools</a>
+                    <a href="#web3" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Web3</a>
+                    <a href="#case-studies" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Case Studies</a>
+                    <a href="#about" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">About</a>
+                    <a href="#contact" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Contact</a>
+                    <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Blog</a>
+                </div>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-pink-700 focus:outline-none ml-4">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-            <nav id="menu" class="hidden md:flex md:space-x-4">
-                <a href="#home" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Home</a>
-                <a href="#services" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Services</a>
-                <a href="/pricing.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Pricing</a>
-                <a href="#tools" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Tools</a>
-                <a href="#web3" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Web3</a>
-                <a href="#case-studies" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Case Studies</a>
-                <a href="#about" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">About</a>
-                <a href="#contact" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Contact</a>
-                <a href="/blog.html" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Blog</a>
-            </nav>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-pink-100">
             <nav class="flex flex-col space-y-2 px-4 py-2">
@@ -261,7 +263,7 @@
             <p class="text-gray-700 text-sm sm:text-base mb-6 max-w-xl mx-auto">Schedule a consultation to explore how our AI-powered, bilingual VAs can support your goals.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
                 <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Book Now</a>
-                <a href="https://slack.com/oauth/v2/authorize?client_id=T08TV5AH6UE&scope=channels:join,chat:write,users:read&redirect_uri=https://vividassistpro.com/thank-you.html" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg flex items-center justify-center">
+                <a href="https://slack.com/oauth/v2/authorize?client_id=YOUR_ACTUAL_CLIENT_ID&scope=channels:join,chat:write,users:read&redirect_uri=https://vividassistpro.com/thank-you.html" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg flex items-center justify-center">
                     <img src="https://platform.slack-edge.com/img/add_to_slack.png" alt="Add to Slack" class="h-6 mr-2" loading="lazy"> Connect via Slack
                 </a>
             </div>
