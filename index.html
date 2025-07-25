@@ -67,7 +67,7 @@
     <!-- Header -->
     <header class="bg-pink-100 shadow fixed top-0 w-full z-10">
         <div class="container mx-auto px-4 py-4 flex items-center">
-            <img src="/vividlogo.png" alt="Vivid Assist logo" onerror="this.src='https://via.placeholder.com/150?text=Vivid+Assist+Logo'" class="h-10 sm:h-12 mr-4 object-contain" loading="lazy">
+            <img src="/vividlogo.png" alt="Vivid cuisidAssist logo" onerror="this.src='https://via.placeholder.com/150?text=Vivid+Assist+Logo'" class="h-10 sm:h-12 mr-4 object-contain" loading="lazy">
             <nav id="menu" class="flex-1">
                 <div class="md:flex md:space-x-4 justify-end">
                     <a href="#home" class="text-pink-700 hover:text-pink-900 text-sm md:text-base">Home</a>
@@ -265,16 +265,12 @@
                 <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Book Now</a>
             </div>
             <p class="text-gray-700 text-sm sm:text-base mb-6">Email: <a href="mailto:pinkeliteva@gmail.com" class="text-pink-700 hover:text-pink-900">pinkeliteva@gmail.com</a> | Phone: 786-385-7888 | Telegram: @VividAssistPro</p>
-            <!-- Lead Magnet Form -->
+            <!-- Free Guide Download Form -->
             <div class="mt-6 max-w-md mx-auto">
-                <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Download Our Free eBook</h3>
-                <p class="text-gray-700 text-sm sm:text-base mb-4">Discover 5 Ways AI-Powered VAs Boost CEO Productivity.</p>
-                <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dfn000003U2iy" method="POST" class="bg-white p-6 rounded-lg shadow">
-                    <input type="hidden" name="captcha_settings" value='{"keyname":"vividassistpro","fallback":"true","orgId":"00Dfn000003U2iy","ts":""}'>
-                    <input type="hidden" name="oid" value="00Dfn000003U2iy">
-                    <input type="hidden" name="retURL" value="https://www.vividassistpro.com/thank-you.html">
-                    <input type="hidden" name="lead_source" value="eBook Download">
-                    <input type="hidden" name="Campaign_ID" value="701fn0000012345">
+                <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Download Our Free 2025 Productivity Guide</h3>
+                <p class="text-gray-700 text-sm sm:text-base mb-4">Unlock Your Productivity with Vivid Assist Pro’s AI-Powered Virtual Assistance Guide.</p>
+                <form name="freeguide" action="/.netlify/functions/download-guide" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="bg-white p-6 rounded-lg shadow">
+                    <input type="hidden" name="form-name" value="freeguide">
                     <div class="mb-4">
                         <label for="first_name" class="block text-left text-gray-700 font-bold text-sm mb-2">First Name</label>
                         <input id="first_name" maxlength="40" name="first_name" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" required />
@@ -300,10 +296,8 @@
                         <label for="business_goals" class="block text-left text-gray-700 font-bold text-sm mb-2">Primary Business Goal</label>
                         <input id="business_goals" maxlength="100" name="business_goals" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="e.g., Scale revenue, launch Web3 project" />
                     </div>
-                    <div class="mb-4">
-                        <div class="g-recaptcha" data-sitekey="6LfXTVgrAAAAAOw-bWzQCVBIvWCed1G9sJ-GuyP5"></div>
-                    </div>
-                    <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Get Your Free eBook</button>
+                    <div data-netlify-recaptcha="true"></div>
+                    <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Download Free Guide</button>
                 </form>
             </div>
             <!-- Newsletter Signup Form -->
