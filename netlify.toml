@@ -1,6 +1,5 @@
-```toml
 [build]
-  command = "npm install"
+  command = "npm run build"
   functions = "netlify/functions"
   publish = "static"
 
@@ -11,9 +10,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/download-guide"
-  to = "/.netlify/functions/download-guide"
-  status = 200
-```
