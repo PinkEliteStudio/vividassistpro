@@ -1,5 +1,19 @@
+```toml
+[build]
+  command = "npm install"
+  functions = "netlify/functions"
+  publish = "static"
+
+[functions]
+  node_bundler = "esbuild"
+
 [[redirects]]
-  from = "https://www.vividassistpro.com/*"
-  to = "https://vividassistpro.com/:splat"
-  status = 301
-  force = true
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/.netlify/functions/download-guide"
+  to = "/.netlify/functions/download-guide"
+  status = 200
+```
