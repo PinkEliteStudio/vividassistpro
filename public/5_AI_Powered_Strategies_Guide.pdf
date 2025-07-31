@@ -1,0 +1,5 @@
+mkdir public
+mv 5_AI_Powered_Strategies_Guide.pdf public/
+git add public/5_AI_Powered_Strategies_Guide.pdf
+git commit -m "Create public directory and add PDF"
+git push
