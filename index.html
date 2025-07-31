@@ -39,8 +39,7 @@
         }
     }
     </script>
-    <meta name="google-site-verification" content="A_Ud7dzKo7OgwFWYUj3URakQm3lhzJVWFHB2ZdQPNMY" />
-    <link rel="alternate" hreflang="en" href="https://vividassistpro.com/" />
+    <meta name="google-site-verification" content="A_Ud7dzKo7OgwFWYUj3URakQm3lhzJVWFHB2ZdQianza    <link rel="alternate" hreflang="en" href="https://vividassistpro.com/" />
     <link rel="alternate" hreflang="es" href="https://vividassistpro.com/es/" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GPS2B0L2T"></script>
     <script>
@@ -268,7 +267,7 @@
             <div class="mt-6 max-w-md mx-auto">
                 <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Download Our Free 2025 Efficiency Guide</h3>
                 <p class="text-gray-700 text-sm sm:text-base mb-4">Unlock 5 AI-Powered Strategies to Save 10 Hours/Week and Scale Your Business.</p>
-                <form name="efficiency-guide" action="/.netlify/functions/download-guide" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="bg-white p-6 rounded-lg shadow">
+                <form name="efficiency-guide" action="/.netlify/functions/download-guide" method="POST" data-netlify="true" class="bg-white p-6 rounded-lg shadow">
                     <input type="hidden" name="form-name" value="efficiency-guide">
                     <div class="mb-4">
                         <label for="first_name" class="block text-left text-gray-700 font-bold text-sm mb-2">First Name</label>
@@ -286,7 +285,9 @@
                         <label for="time_management_challenge" class="block text-left text-gray-700 font-bold text-sm mb-2">What’s Your Biggest Time Management Challenge?</label>
                         <input id="time_management_challenge" maxlength="100" name="time_management_challenge" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="e.g., Emails, scheduling" required />
                     </div>
-                    <div data-netlify-recaptcha="true"></div>
+                    <div class="mb-4">
+                        <div class="g-recaptcha" data-sitekey="6LfXTVgrAAAAAOw-bWzQCVBIvWCed1G9sJ-GuyP5"></div>
+                    </div>
                     <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Download Free Guide</button>
                 </form>
             </div>
@@ -334,6 +335,37 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // Form submission handling for efficiency guide
+        const form = document.querySelector('form[name="efficiency-guide"]');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    // Trigger PDF download
+                    const blob = new Blob([new Uint8Array(atob(result.body).split('').map(c => c.charCodeAt(0)))], { type: 'application/pdf' });
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = '5_AI_Powered_Strategies_Guide.pdf';
+                    link.click();
+                    window.URL.revokeObjectURL(url);
+                    alert('Download started! Check your downloads folder.');
+                } else {
+                    alert(result.error || 'Failed to download the guide. Please try again.');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('An error occurred. Please try again later.');
+            }
         });
     </script>
 </body>
