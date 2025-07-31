@@ -1,10 +1,10 @@
 [build]
-  command = "npm run build"
-  functions = "netlify/functions"
-  publish = "static"
+  # No build command is needed for a static HTML site
+  command = ""
+  publish = "."
 
 [functions]
-  node_bundler = "esbuild"
+  directory = "netlify/functions"
 
 [[redirects]]
   from = "/*"
