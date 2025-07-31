@@ -50,18 +50,6 @@
       gtag('config', 'G-4GPS2B0L2T');
     </script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-     function timestamp() { 
-         var response = document.getElementById("g-recaptcha-response"); 
-         if (response == null || response.value.trim() == "") {
-             var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
-             elems["ts"] = JSON.stringify(new Date().getTime());
-             document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
-         } 
-     } 
-     setInterval(timestamp, 500); 
-    </script>
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/12345678.js"></script>
     <style>
         .animate-fade-in { animation: fadeIn 1s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -212,14 +200,6 @@
         </div>
     </section>
 
-    <section id="analytics" class="py-12 sm:py-16 bg-pink-50">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Data-Driven Insights for Your Empire</h2>
-            <p class="text-gray-700 text-sm sm:text-base mb-6 max-w-2xl mx-auto">Unlock strategic insights with our AI-powered analytics, delivering quarterly reports on lead sources, engagement rates, and ROI to drive your multi-million-dollar growth.</p>
-            <a href="https://calendly.com/pinkelitestudio" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-base sm:text-lg">Discover Your Growth Potential</a>
-        </div>
-    </section>
-
     <section id="web3" class="py-12 sm:py-16 bg-pink-50">
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <h2 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Web3 Support for Crypto Entrepreneurs</h2>
@@ -288,8 +268,8 @@
             <div class="mt-6 max-w-md mx-auto">
                 <h3 class="text-xl sm:text-2xl font-bold text-pink-900 mb-4">Download Our Free 2025 Efficiency Guide</h3>
                 <p class="text-gray-700 text-sm sm:text-base mb-4">Unlock 5 AI-Powered Strategies to Save 10 Hours/Week and Scale Your Business.</p>
-                <form name="freeguide" action="/.netlify/functions/download-guide" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="bg-white p-6 rounded-lg shadow">
-                    <input type="hidden" name="form-name" value="freeguide">
+                <form name="efficiency-guide" action="/.netlify/functions/download-guide" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="bg-white p-6 rounded-lg shadow">
+                    <input type="hidden" name="form-name" value="efficiency-guide">
                     <div class="mb-4">
                         <label for="first_name" class="block text-left text-gray-700 font-bold text-sm mb-2">First Name</label>
                         <input id="first_name" maxlength="40" name="first_name" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" required />
@@ -303,17 +283,8 @@
                         <input id="email" maxlength="80" name="email" size="20" type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" required />
                     </div>
                     <div class="mb-4">
-                        <label for="company_revenue" class="block text-left text-gray-700 font-bold text-sm mb-2">Company Annual Revenue</label>
-                        <select id="company_revenue" name="company_revenue" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
-                            <option value="">Select Revenue Range</option>
-                            <option value="1M-5M">$1M - $5M</option>
-                            <option value="5M-10M">$5M - $10M</option>
-                            <option value="10M+">$10M+</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="business_goals" class="block text-left text-gray-700 font-bold text-sm mb-2">Primary Business Goal</label>
-                        <input id="business_goals" maxlength="100" name="business_goals" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="e.g., Scale revenue, launch Web3 project" />
+                        <label for="time_management_challenge" class="block text-left text-gray-700 font-bold text-sm mb-2">What’s Your Biggest Time Management Challenge?</label>
+                        <input id="time_management_challenge" maxlength="100" name="time_management_challenge" size="20" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="e.g., Emails, scheduling" required />
                     </div>
                     <div data-netlify-recaptcha="true"></div>
                     <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 text-sm">Download Free Guide</button>
