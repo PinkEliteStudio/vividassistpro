@@ -1,7 +1,7 @@
 [build]
-  # No build command is needed for a static HTML site
   command = ""
   publish = "."
+  environment = { NODE_VERSION = "18" }
 
 [functions]
   directory = "netlify/functions"
