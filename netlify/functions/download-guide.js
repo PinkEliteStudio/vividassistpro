@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
           'Content-Type': 'application/pdf',
           'Content-Disposition': 'attachment; filename="5_AI_Powered_Strategies_Guide.pdf"',
         },
-        body: pdf.toString('base64'), // Use base64 for PDF
+        body: pdf.toString('base64'),
         isBase64Encoded: true,
       };
     } else {
